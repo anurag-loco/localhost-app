@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "nextId": 4,
+  "anchors": [
+    {
+      "id": "anchor_0000000001",
+      "previousSemantic": {
+        "version": 1,
+        "sourceScope": "module:src/components/project/ProjectHeader.tsx",
+        "activationFamily": "activate",
+        "outcomes": [
+          {
+            "mode": "push",
+            "target": {
+              "kind": "unresolved-pattern",
+              "normalizedPattern": "/:param"
+            }
+          }
+        ]
+      },
+      "previousEvidence": {
+        "semanticRole": "link",
+        "stableAttributes": {},
+        "sourceModule": "src/components/project/ProjectHeader.tsx",
+        "owningComponent": "ProjectHeader"
+      },
+      "lastSeenAt": "2026-07-26T07:18:54.529Z"
+    },
+    {
+      "id": "anchor_0000000002",
+      "previousSemantic": {
+        "version": 1,
+        "sourceScope": "module:src/components/project/ProjectHeader.tsx",
+        "activationFamily": "activate",
+        "outcomes": [
+          {
+            "mode": "push",
+            "target": {
+              "kind": "unresolved-pattern",
+              "normalizedPattern": "/:param"
+            }
+          }
+        ]
+      },
+      "previousEvidence": {
+        "semanticRole": "link",
+        "stableAttributes": {},
+        "sourceModule": "src/components/project/ProjectHeader.tsx",
+        "owningComponent": "ProjectHeader"
+      },
+      "lastSeenAt": "2026-07-26T07:18:54.529Z"
+    },
+    {
+      "id": "anchor_0000000003",
+      "previousSemantic": {
+        "version": 1,
+        "sourceScope": "route:/card",
+        "activationFamily": "activate",
+        "outcomes": [
+          {
+            "mode": "push",
+            "target": {
+              "kind": "internal-route",
+              "routeKey": "/"
+            }
+          }
+        ]
+      },
+      "previousEvidence": {
+        "semanticRole": "link",
+        "stableAttributes": {},
+        "sourceModule": "src/pages/CardPage.tsx",
+        "owningComponent": "CardPage"
+      },
+      "lastSeenAt": "2026-07-26T07:18:54.529Z"
+    }
+  ]
+}
