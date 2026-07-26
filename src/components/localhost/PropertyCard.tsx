@@ -9,6 +9,7 @@ export type PropertyCardProps = {
   imageUrl: string;
   isSuperhost?: boolean;
   onFavoriteClick?: (isFavorited: boolean) => void;
+  onStarClick?: (isStarred: boolean) => void;
   onCardClick?: () => void;
 };
 
@@ -25,9 +26,11 @@ const PropertyCard: FunctionComponent<PropertyCardProps> = ({
   imageUrl,
   isSuperhost = false,
   onFavoriteClick,
+  onStarClick,
   onCardClick
 }) => {
   const [isFavorited, setIsFavorited] = useState(false);
+  const [isStarred, setIsStarred] = useState(false);
 
   const handleFavoriteClick = (event: React.MouseEvent) => {
     event.stopPropagation(); // Prevent card click when clicking favorite
@@ -35,6 +38,15 @@ const PropertyCard: FunctionComponent<PropertyCardProps> = ({
     setIsFavorited(newFavoriteState);
     if (onFavoriteClick) {
       onFavoriteClick(newFavoriteState);
+    }
+  };
+
+  const handleStarClick = (event: React.MouseEvent) => {
+    event.stopPropagation(); // Prevent card click when clicking star
+    const newStarredState = !isStarred;
+    setIsStarred(newStarredState);
+    if (onStarClick) {
+      onStarClick(newStarredState);
     }
   };
 
@@ -88,23 +100,46 @@ const PropertyCard: FunctionComponent<PropertyCardProps> = ({
           </div>
         )}
         
-        {/* Favorite Button */}
-        <button
-          className={`
-            absolute top-3 right-3 h-8 w-8 flex items-center justify-center
-            rounded-full transition-colors duration-200
-            hover:bg-white hover:bg-opacity-20 focus:outline-none focus:ring-2 focus:ring-white
-            ${isFavorited ? 'text-red-500' : 'text-white'}
-          `}
-          onClick={handleFavoriteClick}
-          aria-label={isFavorited ? 'Remove from favorites' : 'Add to favorites'}
-        >
-          <img 
-            className="w-6 h-6 transform scale-150" 
-            alt={isFavorited ? 'favorited' : 'not favorited'}
-            src="/heart-icon.svg" 
-          />
-        </button>
+        {/* Action Buttons */}
+        <div className="absolute top-3 right-3 flex items-center gap-1">
+          {/* Favorite Button */}
+          <button
+            className={`
+              h-8 w-8 flex items-center justify-center
+              rounded-full transition-colors duration-200
+              hover:bg-white hover:bg-opacity-20 focus:outline-none focus:ring-2 focus:ring-white
+              ${isFavorited ? 'text-red-500' : 'text-white'}
+            `}
+            onClick={handleFavoriteClick}
+            aria-label={isFavorited ? 'Remove from favorites' : 'Add to favorites'}
+            aria-pressed={isFavorited}
+          >
+            <img 
+              className="w-6 h-6 transform scale-150" 
+              alt={isFavorited ? 'favorited' : 'not favorited'}
+              src="/heart-icon.svg" 
+            />
+          </button>
+
+          {/* Star Button */}
+          <button
+            className={`
+              h-8 w-8 flex items-center justify-center
+              rounded-full transition-colors duration-200
+              hover:bg-white hover:bg-opacity-20 focus:outline-none focus:ring-2 focus:ring-white
+              ${isStarred ? 'opacity-100' : 'opacity-60'}
+            `}
+            onClick={handleStarClick}
+            aria-label={isStarred ? 'Remove star' : 'Add star'}
+            aria-pressed={isStarred}
+          >
+            <img 
+              className="w-5 h-5 drop-shadow" 
+              alt={isStarred ? 'starred' : 'not starred'}
+              src="/star-icon.svg" 
+            />
+          </button>
+        </div>
       </div>
 
       {/* Content */}
