@@ -89,11 +89,12 @@ const FormInput: FunctionComponent<FormInputProps> = ({
             className={`
               w-full px-3 py-2 rounded-md border bg-white
               font-helvetica-neue text-base text-gray-700
-              placeholder-gray-500 transition-colors duration-200
+              placeholder:text-sm placeholder-gray-500 transition-colors duration-200
               focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
               disabled:bg-gray-100 disabled:text-gray-500 disabled:cursor-not-allowed
               ${isFocused ? 'border-blue-500' : 'border-gray-300'}
               ${disabled ? 'border-gray-200' : ''}
+              ${!value ? 'text-sm text-gray-500' : ''}
             `}
             aria-describedby={helpText ? `${label}-help` : undefined}
           >
@@ -119,7 +120,7 @@ const FormInput: FunctionComponent<FormInputProps> = ({
             className={`
               w-full px-3 py-2 rounded-md border bg-white
               font-helvetica-neue text-base text-gray-700
-              placeholder-gray-500 transition-colors duration-200
+              placeholder:text-sm placeholder-gray-500 transition-colors duration-200
               focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
               disabled:bg-gray-100 disabled:text-gray-500 disabled:cursor-not-allowed
               ${isFocused ? 'border-blue-500' : 'border-gray-300'}
