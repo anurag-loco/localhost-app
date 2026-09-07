@@ -56,7 +56,29 @@ module.exports = {
         },
         saddlebrown: "#975b00",
         red: "#ff0303",
+        protelco: {
+          page: "#f0f0f0",
+          accent: "#d40a0d",
+          content: "#373737",
+          field: "#f7f7f7",
+          border: "#f3f0f0",
+          muted: "#a7a7a7",
+          status: "#4fc786",
+          support: "#797b7d",
+        },
+        // Locofy Edit User tokens (namespaced to avoid colliding with existing palettes)
+        darkslategray: "#373737",
+        mediumseagreen: "#4fc786",
+        darkgray: "#a7a7a7",
         lightcyan: "#defff9",
+      },
+      backgroundImage: {
+        "protelco-save": "linear-gradient(0deg, #d40a0d, #ea6f04)",
+      },
+      spacing: {
+        "num-calc100-44": "calc(100% - 44px)",
+        "num-290": "290px",
+        "num-150": "150px",
       },
       fontFamily: {
         archivo: "Archivo",
@@ -68,6 +90,8 @@ module.exports = {
         "helvetica-neue": "'Helvetica Neue'",
       },
       borderRadius: {
+        "num-6": "6px",
+        "num-4": "4px",
         "3xs": "10px",
         smi: "13px",
         "4xs": "9px",
@@ -77,6 +101,11 @@ module.exports = {
         "12xs-5": "0.5px",
       },
       padding: {
+        "num-12": "12px",
+        "num-24": "24px",
+        "num-2": "2px",
+        "num-0": "0",
+        "num-20": "20px",
         "3xs": "10px",
         "11xl": "30px",
         "21xl": "40px",
@@ -102,6 +131,7 @@ module.exports = {
       },
     },
     fontSize: {
+      "num-14": "14px",
       xs: "0.75rem",
       sm: "0.875rem",
       base: "1rem",

@@ -8,160 +8,215 @@ export type ProjectHeaderProps = {
   onMenuClick?: () => void;
 };
 
-/**
- * Project management header with company branding and user navigation
- * Includes responsive navigation menu and user profile
- */
+const navigationItems = [
+  { label: 'Dashboard', href: '/dashboard' },
+  { label: 'Parámetros', href: '/parameters' },
+  { label: 'Proyectos', href: '/projects', isActive: true },
+];
+
 const ProjectHeader: FunctionComponent<ProjectHeaderProps> = ({
-  className = "",
-  companyName = "Innovatech Solutions",
-  userInitials = "JS",
+  className = '',
+  companyName = 'Innovatech Solutions',
+  userInitials = 'JS',
   userAvatar,
-  onMenuClick
+  onMenuClick,
 }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const navigationItems = [
-    { label: 'Dashboard', href: '/dashboard', isActive: false },
-    { label: 'Parámetros', href: '/parameters', isActive: false },
-    { label: 'Proyectos', href: '/projects', isActive: true }
-  ];
-
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
+    setIsMobileMenuOpen((isOpen) => !isOpen);
+    onMenuClick?.();
   };
 
   return (
-    <header 
-      className={`
-        w-full border-b border-gray-200 bg-white sticky top-0 z-50
-        flex items-center justify-between py-3 px-10 gap-5
-        ${className}
-      `}
+    <header
+      className={className}
       role="banner"
+      style={{
+        background: '#ffffff',
+        borderBottom: '1px solid #acacac',
+        color: '#111111',
+        fontFamily: 'sans-serif',
+        position: 'sticky',
+        top: 0,
+        zIndex: 50,
+      }}
     >
-      {/* Left side - Company branding */}
-      <div className="flex items-center gap-4">
-        <img 
-          className="w-4 h-4" 
-          alt="Company logo" 
-          src="/InputSubindustryName.svg"
-          loading="lazy"
-        />
-        <div className="flex flex-col">
-          <h1 className="text-lg font-bold text-gray-800 leading-tight">
+      <div
+        style={{
+          alignItems: 'center',
+          display: 'grid',
+          gap: 20,
+          gridTemplateColumns: 'minmax(180px, 1fr) auto minmax(180px, 1fr)',
+          minHeight: 76,
+          padding: '0 clamp(18px, 4vw, 52px)',
+        }}
+      >
+        <div style={{ minWidth: 0 }}>
+          <div
+            style={{
+              color: '#7c7c7c',
+              fontSize: 10,
+              fontWeight: 700,
+              letterSpacing: '.16em',
+              marginBottom: 4,
+              textTransform: 'uppercase',
+            }}
+          >
+            Workspace
+          </div>
+          <h1
+            style={{
+              fontSize: 17,
+              lineHeight: 1.1,
+              margin: 0,
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap',
+            }}
+          >
             {companyName}
           </h1>
         </div>
-      </div>
 
-      {/* Right side - Navigation and user */}
-      <div className="flex-1 flex items-center justify-end gap-8">
-        {/* Desktop Navigation */}
-        <nav 
-          className="hidden lg:flex items-center gap-9"
-          role="navigation"
+        <nav
           aria-label="Main navigation"
+          className="project-header-navigation"
+          style={{ alignItems: 'stretch', display: 'flex', height: '100%' }}
         >
-          {navigationItems.map((item, index) => (
+          {navigationItems.map((item) => (
             <a
-              key={index}
-              href={item.href}
-              className={`
-                text-sm font-medium transition-colors duration-200
-                hover:text-blue-600 focus:outline-none focus:text-blue-600
-                ${item.isActive 
-                  ? 'text-gray-800 border-b-2 border-blue-600 pb-1' 
-                  : 'text-gray-600'
-                }
-              `}
               aria-current={item.isActive ? 'page' : undefined}
+              href={item.href}
+              key={item.href}
+              style={{
+                alignItems: 'center',
+                borderBottom: item.isActive
+                  ? '3px solid #111111'
+                  : '3px solid transparent',
+                color: item.isActive ? '#111111' : '#7c7c7c',
+                display: 'flex',
+                fontSize: 13,
+                fontWeight: item.isActive ? 750 : 500,
+                padding: '0 18px',
+                textDecoration: 'none',
+              }}
             >
               {item.label}
             </a>
           ))}
         </nav>
 
-        {/* Mobile menu button */}
-        <button
-          className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
-          onClick={toggleMobileMenu}
-          aria-label="Toggle mobile menu"
-          aria-expanded={isMobileMenuOpen}
+        <div
+          style={{
+            alignItems: 'center',
+            display: 'flex',
+            gap: 10,
+            justifyContent: 'flex-end',
+          }}
         >
-          <img 
-            className="w-6 h-6" 
-            alt="Menu" 
-            src="/Depth-4-Frame-1.svg"
-          />
-        </button>
-
-        {/* Notification button */}
-        <button
-          className="p-2 rounded-lg hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
-          aria-label="Notifications"
-        >
-          <img 
-            className="w-10 h-10 rounded-lg" 
-            alt="Notifications" 
-            src="/Depth-4-Frame-1.svg"
-          />
-        </button>
-
-        {/* User profile */}
-        <div className="relative">
           <button
-            className="focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-full"
+            aria-label="Notifications"
+            style={{
+              background: '#ffffff',
+              border: 0,
+              color: '#111111',
+              fontFamily: 'sans-serif',
+              fontSize: 22,
+              height: 38,
+              width: 38,
+            }}
+            type="button"
+          >
+            •
+          </button>
+          <button
             aria-label="User menu"
+            style={{
+              background: '#ffffff',
+              border: '1px solid #acacac',
+              borderRadius: 8,
+              color: '#111111',
+              fontFamily: 'sans-serif',
+              fontWeight: 750,
+              height: 42,
+              overflow: 'hidden',
+              padding: 0,
+              width: 42,
+            }}
+            type="button"
           >
             {userAvatar ? (
-              <img 
-                className="w-10 h-10 rounded-full object-cover" 
-                alt="User avatar" 
+              <img
+                alt="User avatar"
                 src={userAvatar}
+                style={{ height: '100%', objectFit: 'cover', width: '100%' }}
               />
             ) : (
-              <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center">
-                <span className="text-white font-medium text-sm">
-                  {userInitials}
-                </span>
-              </div>
+              userInitials
             )}
+          </button>
+          <button
+            aria-expanded={isMobileMenuOpen}
+            aria-label="Toggle mobile menu"
+            className="project-header-menu-button"
+            onClick={toggleMobileMenu}
+            style={{
+              background: '#ffffff',
+              border: '1px solid #acacac',
+              borderRadius: 8,
+              color: '#111111',
+              display: 'none',
+              fontFamily: 'sans-serif',
+              height: 40,
+              width: 40,
+            }}
+            type="button"
+          >
+            ☰
           </button>
         </div>
       </div>
 
-      {/* Mobile Navigation Menu */}
       {isMobileMenuOpen && (
-        <div className="absolute top-full left-0 right-0 bg-white border-b border-gray-200 shadow-lg lg:hidden">
-          <nav className="flex flex-col py-4 px-6" role="navigation">
-            {navigationItems.map((item, index) => (
-              <a
-                key={index}
-                href={item.href}
-                className={`
-                  py-3 text-sm font-medium transition-colors duration-200
-                  hover:text-blue-600 focus:outline-none focus:text-blue-600
-                  ${item.isActive ? 'text-blue-600' : 'text-gray-600'}
-                `}
-                onClick={() => setIsMobileMenuOpen(false)}
-                aria-current={item.isActive ? 'page' : undefined}
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-        </div>
+        <nav
+          aria-label="Mobile navigation"
+          className="project-header-mobile-navigation"
+          style={{ display: 'none', padding: '8px 18px 18px' }}
+        >
+          {navigationItems.map((item) => (
+            <a
+              aria-current={item.isActive ? 'page' : undefined}
+              href={item.href}
+              key={item.href}
+              onClick={() => setIsMobileMenuOpen(false)}
+              style={{
+                borderTop: '1px solid #acacac',
+                color: '#111111',
+                display: 'block',
+                fontWeight: item.isActive ? 750 : 500,
+                padding: '12px 0',
+                textDecoration: 'none',
+              }}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
       )}
 
-      {/* Mobile menu overlay */}
-      {isMobileMenuOpen && (
-        <div 
-          className="fixed inset-0 bg-black bg-opacity-25 lg:hidden"
-          onClick={() => setIsMobileMenuOpen(false)}
-          aria-hidden="true"
-        />
-      )}
+      <style>{`
+        @media (max-width: 760px) {
+          .project-header-navigation {
+            display: none !important;
+          }
+
+          .project-header-menu-button,
+          .project-header-mobile-navigation {
+            display: block !important;
+          }
+        }
+      `}</style>
     </header>
   );
 };
