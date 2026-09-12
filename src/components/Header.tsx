@@ -41,7 +41,6 @@ const Header: FunctionComponent<HeaderType> = ({
         borderBottom: `1px solid ${colors.border}`,
       }}
     >
-      <div>Changed</div>
       <Box
         sx={{
           maxWidth: 1380,
