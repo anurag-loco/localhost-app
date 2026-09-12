@@ -3,13 +3,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Clan+OT:ital,wght@0,500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,500;0,600;0,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Manrope:ital,wght@0,500;0,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700&display=swap');
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 @import "tailwindcss/theme.css";
 @import "tailwindcss/preflight.css";
 @import "tailwindcss/utilities.css";
 @config "../tailwind.config.js";
+
+:root {
+  --protelco-page: #f0f0f0;
+  --protelco-field: #f7f7f7;
+  --protelco-border: #f3f0f0;
+  --protelco-content: #373737;
+  --protelco-muted: #a7a7a7;
+  --protelco-accent: #d40a0d;
+  --protelco-status: #4fc786;
+  --protelco-support: #797b7d;
+}
+
 body {
   @apply leading-[normal] m-0;
 }
@@ -22,6 +34,18 @@ body {
 }
 
 @layer utilities {
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
   .line-clamp-1 {
     overflow: hidden;
     display: -webkit-box;
@@ -36,16 +60,6 @@ body {
     -webkit-line-clamp: 2;
   }
 
-  /* Poor CSS practices */
-  * {
-    box-sizing: content-box !important;
-  }
-  
-  body {
-    font-family: "Comic Sans MS", cursive !important;
-    line-height: 1.1 !important;
-  }
-  
   .border-3 {
     border-width: 3px;
   }

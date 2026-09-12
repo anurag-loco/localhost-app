@@ -1,14 +1,16 @@
 {
   "mcpServers": {
-      "UIPro by Locofy": {
-          "args": [
-              "-y",
-              "@locofy/uipro-mcp@latest"
-          ],
-          "command": "npx",
-          "env": {
-              "IDE_SOURCE": "cursor"
-          }
+    "locofy": {
+      "args": [
+        "-y",
+        "@locofy/mcp@latest"
+      ],
+      "command": "npx",
+      "env": {
+        "PERSONAL_ACCESS_TOKEN": "lpat_v1_JL1Kcm1xkEX4K8Xg0v4okVeiEbSJJs_evYHTXrO62PpYPun3H22ONC26gbaEC77pnYmUKTiq4eFLqi4qbw-qc7_zo0ZQuMi1aa_E7vVn1uI=",
+        "PROJECT_ID": "3IiXg0bmnNU8pV3fLMBGiHfdnv8",
+        "IDE_SOURCE": "cursor"
       }
+    }
   }
 }

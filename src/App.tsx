@@ -11,6 +11,8 @@ import SignUpPage from "./pages/SignUpPage";
 import CardPage from "./pages/CardPage";
 import AdminSettingsPage from "./pages/AdminSettingsPage";
 import NewProjectPage from "./pages/NewProjectPage";
+import AllUsersPage from "./pages/AllUsersPage";
+import UserDetails from "./components/UserDetails";
 
 function App() {
   const action = useNavigationType();
@@ -56,6 +58,14 @@ function App() {
         title = "New Project - Innovatech Solutions";
         metaDescription = "Create a new project with company details, industry selection, and file uploads";
         break;
+      case "/all-users":
+        title = "All Users - Protelco";
+        metaDescription = "View and filter Protelco user profiles by status";
+        break;
+      case "/user-details":
+        title = "Edit User - Protelco";
+        metaDescription = "Edit Protelco user account details";
+        break;
       case "/localhost":
         title = "Localhost - Find a host for every journey";
         metaDescription = "Discover the best local rental properties that fits your every travel needs";
@@ -85,6 +95,8 @@ function App() {
       <Route path="/card" element={<CardPage />} />
       <Route path="/admin" element={<AdminSettingsPage />} />
       <Route path="/new-project" element={<NewProjectPage />} />
+      <Route path="/all-users" element={<AllUsersPage />} />
+      <Route path="/user-details" element={<UserDetails />} />
       
     </Routes>
   );
