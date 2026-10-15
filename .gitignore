@@ -3,3 +3,4 @@
 .locofy/
 .cursor/
 .pnpm-store/
+node_modules/
