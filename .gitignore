@@ -4,3 +4,4 @@
 .cursor/
 .pnpm-store/
 node_modules/
+.vscode/
